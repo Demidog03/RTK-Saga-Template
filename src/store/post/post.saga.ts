@@ -1,4 +1,4 @@
-import {deletePost, fetchPosts, setPosts} from './post.slice.ts'
+import {deletePost, fetchDeletePost, fetchPosts, setPosts} from './post.slice.ts'
 import {deletePostApi, fetchPostsApi} from '../../api/post.ts'
 import {call, put, takeLeading, delay} from 'redux-saga/effects'
 import {ResponseType} from '../../api/types.ts'
@@ -17,7 +17,7 @@ function* getPostsSaga() {
   }
 }
 
-function* deletePostSaga(action: ReturnType<typeof deletePost>) {
+function* deletePostSaga(action: ReturnType<typeof fetchDeletePost>) {
   try {
     yield put(setSpinnerOpen(true))
     yield delay(1000);
@@ -31,5 +31,5 @@ function* deletePostSaga(action: ReturnType<typeof deletePost>) {
 
 export function* postSaga(){
   yield takeLeading(fetchPosts.type, getPostsSaga)
-  yield takeLeading(deletePost.type, deletePostSaga)
+  yield takeLeading(fetchDeletePost.type, deletePostSaga)
 }

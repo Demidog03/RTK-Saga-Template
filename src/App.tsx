@@ -1,7 +1,7 @@
 import './App.css'
 import {useEffectOnce, useUpdateEffect} from 'usehooks-ts'
 import {useDispatch} from 'react-redux'
-import {deletePost, fetchPosts, postsSelector} from './store/post/post.slice.ts'
+import {fetchDeletePost, fetchPosts, postsSelector} from './store/post/post.slice.ts'
 import {useSelector} from './store'
 import {Pane, Text} from 'evergreen-ui'
 
@@ -18,7 +18,7 @@ function App() {
   }, [posts])
 
   function handleDeletePost(id: number) {
-    dispatch(deletePost({id}))
+    dispatch(fetchDeletePost({id}))
   }
   return (
     <>

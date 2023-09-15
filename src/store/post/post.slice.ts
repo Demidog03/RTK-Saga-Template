@@ -37,6 +37,7 @@ const postSlice = createSlice<PostState, Reducers<PostState>>({
 })
 
 export const fetchPosts = createAction('post/fetchPosts')
+export const fetchDeletePost = createAction<{id: number}>('post/fetchDeletePost')
 
 export const {
   setPosts,
